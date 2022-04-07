@@ -134,14 +134,14 @@ export default class Reverb {
    */
   mix (mix) {
     if (!this.inRange(mix, 0, 1)) {
-      console.warn('Dry/Wet level must be between 0 to 1.');
+      // console.warn('Dry/Wet level must be between 0 to 1.');
 
       return;
     }
     this._mix = mix;
     this.dryGainNode.gain.value = (1 - this._mix);
     this.wetGainNode.gain.value = this._mix;
-    console.info(`Set dry/wet level to ${mix * 100}%`);
+    // console.info(`Set dry/wet level to ${mix * 100}%`);
   }
 
   /**
@@ -151,13 +151,13 @@ export default class Reverb {
    */
   time (value) {
     if (!this.inRange(value, 1, 50)) {
-      console.warn('Time length of inpulse response must be less than 50sec.');
+      // console.warn('Time length of inpulse response must be less than 50sec.');
 
       return;
     }
     this._time = value;
     this.buildImpulse();
-    console.info(`Set inpulse response time length to ${value}sec.`);
+    // console.info(`Set inpulse response time length to ${value}sec.`);
   }
 
   /**
@@ -167,13 +167,13 @@ export default class Reverb {
    */
   decay (value) {
     if (!this.inRange(value, 0, 100)) {
-      console.warn('Inpulse Response decay level must be less than 100.');
+      // console.warn('Inpulse Response decay level must be less than 100.');
 
       return;
     }
     this._decay = value;
     this.buildImpulse();
-    console.info(`Set inpulse response decay level to ${value}.`);
+    // console.info(`Set inpulse response decay level to ${value}.`);
   }
 
   /**
@@ -183,13 +183,13 @@ export default class Reverb {
    */
   delay (value) {
     if (!this.inRange(value, 0, 100)) {
-      console.warn('Inpulse Response delay time must be less than 100.');
+      // console.warn('Inpulse Response delay time must be less than 100.');
 
       return;
     }
     this._delay = value;
     this.buildImpulse();
-    console.info(`Set inpulse response delay time to ${value}sec.`);
+    // console.info(`Set inpulse response delay time to ${value}sec.`);
   }
 
   /**
@@ -200,7 +200,7 @@ export default class Reverb {
   reverse (reverse) {
     this._reverse = reverse;
     this.buildImpulse();
-    console.info(`Inpulse response is ${reverse ? '' : 'not '}reversed.`);
+    // console.info(`Inpulse response is ${reverse ? '' : 'not '}reversed.`);
   }
 
   /**
@@ -212,7 +212,7 @@ export default class Reverb {
     this._filterType = type;
     this.filterNode.type = type;
 
-    console.info(`Set filter type to ${type}`);
+    // console.info(`Set filter type to ${type}`);
   }
 
   /**
@@ -222,7 +222,7 @@ export default class Reverb {
    */
   filterFreq (freq) {
     if (!this.inRange(freq, 20, 5000)) {
-      console.warn('Filter frequrncy must be between 20 and 5000.');
+      // console.warn('Filter frequrncy must be between 20 and 5000.');
 
       return;
     }
@@ -230,7 +230,7 @@ export default class Reverb {
     this._freq = freq;
     this.filterNode.frequency.value = this._freq;
 
-    console.info(`Set filter frequency to ${freq}Hz.`);
+    // console.info(`Set filter frequency to ${freq}Hz.`);
   }
 
   /**
@@ -248,7 +248,7 @@ export default class Reverb {
     this._q = q;
     this.filterNode.Q.value = this._q;
 
-    console.info(`Set filter quality to ${q}.`);
+    // console.info(`Set filter quality to ${q}.`);
   }
 
   /**
